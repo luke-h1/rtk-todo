@@ -4,7 +4,6 @@ import {
   ChakraProvider,
   Text,
   Box,
-  Checkbox,
   Button,
   Flex,
 } from "@chakra-ui/react";
