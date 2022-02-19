@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface State {
-  data: { text: string; id: number; completed: boolean }[];
+  data: { text: string; id: number}[];
 }
 
 const initialState: State = {
@@ -13,14 +13,13 @@ export const todosSlice = createSlice({
   initialState,
   reducers: {
     addTodo(state, action) {
-      const text: string = action.payload;
-      const completed: boolean = action.payload;
+      const text = action.payload;
       const id = Math.random();
 
-      state.data = [{ text, completed, id }, ...state.data];
+      state.data = [{ text, id }, ...state.data];
     },
-    removeTodo(state, action) {
-      const id: number = action.payload;
+    removeTodo(state, action: PayloadAction<number>) {
+      const id = action.payload;
       return {
         ...state,
         data: state.data.filter((todo) => todo.id !== id),
